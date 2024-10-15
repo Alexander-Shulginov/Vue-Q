@@ -45,9 +45,34 @@
 <p><code v-pre>v-show</code> всегда отрисовывает элемент в DOM дереве, но просто скрывает его с помощью <code v-pre>display: none;</code><br>
 Используется при частом переключении видимости элемента.</p>
 <h3 id="v-bind" tabindex="-1"><a class="header-anchor" href="#v-bind"><span>v-bind</span></a></h3>
-<p>Односторонее связывание данных между атрибутами и свойствами компонента.</p>
-<h3 id="v-model" tabindex="-1"><a class="header-anchor" href="#v-model"><span>v-model</span></a></h3>
-<p>Используется только с: <code v-pre>&lt;input&gt;</code>  <code v-pre>&lt;select&gt;</code>  <code v-pre>&lt;textarea&gt;</code>  <code v-pre>компоненты</code></p>
+<p>Односторонее связывание данных между атрибутами и свойствами компонента.<br>
+Имеет сокращенную записать в виде двоеточия <code v-pre>:</code><br>
+Приоритет между нативным атрибутом и атрибом с <code v-pre>v-bind</code> (начиная с v3.0) будет определяться порядком указания, применяться будет всегда последний указанный атрибут</p>
+<div class="language-vue line-numbers-mode" data-highlighter="prismjs" data-ext="vue" data-title="vue"><pre v-pre><code><span class="line"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>red<span class="token punctuation">"</span></span> <span class="token attr-name">v-bind</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>{ id: 'blue' }<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></span>
+<span class="line"><span class="token comment">&lt;!-- результат --></span></span>
+<span class="line"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>blue<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></span>
+<span class="line"></span>
+<span class="line"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">v-bind</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>{ id: 'blue' }<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>red<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></span>
+<span class="line"><span class="token comment">&lt;!-- результат --></span></span>
+<span class="line"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>red<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="v-model" tabindex="-1"><a class="header-anchor" href="#v-model"><span>v-model</span></a></h3>
+<p>Используется для двухстороннего связывания между моделью и представлением, проще говоря, между данными элементов форм и свойствами объекта.<br>
+Используется только с: <code v-pre>&lt;input&gt;</code> <code v-pre>&lt;select&gt;</code> <code v-pre>&lt;textarea&gt;</code> <code v-pre>компоненты</code><br>
+Имеет три модификатора:</p>
+<ul>
+<li><code v-pre>lazy</code> обновление данных произойдет после события <code v-pre>change</code> а не <code v-pre>input</code></li>
+<li><code v-pre>number</code> приводит значения к числу</li>
+<li><code v-pre>trim</code> удаляет пробелы</li>
+</ul>
+<p>Начиная с <Badge type="tip" text="v3.4" vertical="middle" /> рекомендуется использовать <code v-pre>defineModel()</code> который позволяет реализовать двухстороннее связывание между родительским и дочерним компонентами.</p>
+<h3 id="v-for" tabindex="-1"><a class="header-anchor" href="#v-for"><span>v-for</span></a></h3>
+<p>Класcический цикл, итерирует по массивам или объектам.<br>
+Требует указания уникального значения <code v-pre>key</code></p>
+<div class="hint-container info">
+<p class="hint-container-title">Info</p>
+<p>Нельзя использовать вместе с <code v-pre>v-if</code>, так как <code v-pre>v-if</code> имеет больший приоритет</p>
+</div>
 </div></template>
 
 
