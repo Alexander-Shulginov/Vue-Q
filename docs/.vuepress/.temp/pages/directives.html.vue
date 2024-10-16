@@ -67,12 +67,31 @@
 </ul>
 <p>Начиная с <Badge type="tip" text="v3.4" vertical="middle" /> рекомендуется использовать <code v-pre>defineModel()</code> который позволяет реализовать двухстороннее связывание между родительским и дочерним компонентами.</p>
 <h3 id="v-for" tabindex="-1"><a class="header-anchor" href="#v-for"><span>v-for</span></a></h3>
-<p>Класcический цикл, итерирует по массивам или объектам.<br>
-Требует указания уникального значения <code v-pre>key</code></p>
+<p>Класcический цикл, итерирует по массивам или объектам.</p>
+<p>Требует указания уникального значения <code v-pre>key</code>, почему?<br>
+По умолчанию vue взаимодействует с элементами массива по их индексу, и при удалении или добавлении элемента массива индексы сдвигаются что может приводить к ошибкам отображения.<br>
+А так же при обновлении элемента массива, vue будет искать элемент не по индексу, а по уникальному id, что увеличивает производительность при работе с виртуальным-DOM деревом.</p>
 <div class="hint-container info">
 <p class="hint-container-title">Info</p>
 <p>Нельзя использовать вместе с <code v-pre>v-if</code>, так как <code v-pre>v-if</code> имеет больший приоритет</p>
 </div>
+<h3 id="v-on" tabindex="-1"><a class="header-anchor" href="#v-on"><span>v-on</span></a></h3>
+<p>Позволяет прослушивать события, и выполнять код по их наступлению, имеет сокращение в виде - <code v-pre>@</code><br>
+Доступ к объекту события можно получить через <code v-pre>$event</code></p>
+<p>А так же, директива поддерживает модификаторы:</p>
+<ul>
+<li><code v-pre>stop</code> - останавливает всплытие</li>
+<li><code v-pre>prevent</code> - отменяет дефолтное поведение</li>
+<li><code v-pre>self</code> - вызывает событие непосредственно на самом элементе</li>
+<li><code v-pre>once</code> - событие сработает только 1 раз</li>
+</ul>
+<p>И модификаторы системных клавиш <code v-pre>@keyup.ctrl=&quot;some&quot;</code> и так далее</p>
+<h3 id="v-text" tabindex="-1"><a class="header-anchor" href="#v-text"><span>v-text</span></a></h3>
+<p>Обновляет текстовое содержимое DOM элемента, работает через свойство <code v-pre>.textContent</code> поэтому перезаписывает все содержимое элемента.</p>
+<h3 id="v-html" tabindex="-1"><a class="header-anchor" href="#v-html"><span>v-html</span></a></h3>
+<p>Добавляет html разметку через свойство <code v-pre>.innerHtml</code>, использовать не рекомендуется по соображениям безопасности</p>
+<h3 id="v-pre" tabindex="-1"><a class="header-anchor" href="#v-pre"><span>v-pre</span></a></h3>
+<p>Пропускает компиляцию для элемента и всех его потомков.</p>
 </div></template>
 
 
