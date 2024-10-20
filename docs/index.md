@@ -17,6 +17,6 @@ actions:
     type: secondary
 
   - text: Reactive
-    link: /common.html
+    link: /reactivity.html
     type: secondary
 ---
