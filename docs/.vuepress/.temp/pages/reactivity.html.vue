@@ -30,7 +30,7 @@
 <code v-pre>watchEffect()</code> с параметром <code v-pre>flush: 'post'</code> - <code v-pre>watchPostEffect()</code><br>
 <code v-pre>watchEffect()</code> с параметром <code v-pre>flush: 'sync'</code> - <code v-pre>watchSyncEffect()</code></p>
 <p>Версия <Badge type="tip" text="v3.5+" vertical="middle" /> поддреживает методы для управления наблюдателем:</p>
-<div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js" data-title="js"><pre v-pre><code><span class="line"><span class="token keyword">const</span> <span class="token punctuation">{</span> stop<span class="token punctuation">,</span> pause<span class="token punctuation">,</span> resume <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">watchEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="ts"><pre v-pre><code><span class="line"><span class="token keyword">const</span> <span class="token punctuation">{</span> stop<span class="token punctuation">,</span> pause<span class="token punctuation">,</span> resume <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">watchEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
 <span class="line"><span class="token function">pause</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
 <span class="line"><span class="token function">resume</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
 <span class="line"><span class="token function">stop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
@@ -38,8 +38,55 @@
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="чем-отличаются-watch-и-watcheffect" tabindex="-1"><a class="header-anchor" href="#чем-отличаются-watch-и-watcheffect"><span>Чем отличаются watch и watchEffect?</span></a></h3>
 <p><code v-pre>watch()</code> - требует указания отслеживаемых зависимостей, срабатывает только при изменении зависимостей.<br>
 <code v-pre>watchEffect()</code> - не требует указания отслеживаемых зависимостей, срабатывает при монтировании компонента.</p>
-<h3 id="onwatchercleanup" tabindex="-1"><a class="header-anchor" href="#onwatchercleanup"><span>onWatcherCleanup !!!</span></a></h3>
-<p>Регистрирует функцию очистки, которая будет выполняться, когда текущий наблюдатель собирается повторно запуститься.</p>
+<h3 id="onwatchercleanup-3-5" tabindex="-1"><a class="header-anchor" href="#onwatchercleanup-3-5"><span>onWatcherCleanup 3.5+</span></a></h3>
+<p>Регистрирует функцию очистки, которая будет выполняться, когда текущий наблюдатель собирается повторно запуститься или при размонтировании компонента.</p>
+<p>Так же для очистки можно использовать <code v-pre>onCleanup()</code></p>
+<h3 id="isref" tabindex="-1"><a class="header-anchor" href="#isref"><span>isRef()</span></a></h3>
+<p>Проверяет на рекактивность.<br>
+Возвращает <code v-pre>true</code> если переданный аргемент является реактивным.</p>
+<h3 id="unref" tabindex="-1"><a class="header-anchor" href="#unref"><span>unref()</span></a></h3>
+<p>Принимает рективные и литеральные значения, всегда возвращает литерал.</p>
+<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="ts"><pre v-pre><code><span class="line"><span class="token keyword">const</span> reactiveValue <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token number">42</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">const</span> regularValue <span class="token operator">=</span> <span class="token number">50</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="token function">unref</span><span class="token punctuation">(</span>reactiveValue<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 42</span></span>
+<span class="line"><span class="token function">unref</span><span class="token punctuation">(</span>regularValue<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 50</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="toref-3-3" tabindex="-1"><a class="header-anchor" href="#toref-3-3"><span>toRef() 3.3+</span></a></h3>
+<p>Создает двустронее связывание с конкретным свойством объекта.<br>
+Проще говоря, извлекает свойство объекта в переменную, делая их синхронными, то есть при изменении свойства объекта значение переменной поменяется и наоборот.</p>
+<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="ts"><pre v-pre><code><span class="line"><span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token function">reactive</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
+<span class="line">    foo<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span></span>
+<span class="line">    bar<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span></span>
+<span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="token keyword">const</span> fooRef <span class="token operator">=</span> <span class="token function">toRef</span><span class="token punctuation">(</span>state<span class="token punctuation">,</span> <span class="token string">'foo'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line">fooRef<span class="token punctuation">.</span>value<span class="token operator">++</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>state<span class="token punctuation">.</span>foo<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2</span></span>
+<span class="line"></span>
+<span class="line">state<span class="token punctuation">.</span>foo<span class="token operator">++</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>fooRef<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 3</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="tovalue-3-3" tabindex="-1"><a class="header-anchor" href="#tovalue-3-3"><span>toValue() 3.3+</span></a></h3>
+<p>Так же как и <code v-pre>unref()</code> возвращает литеральное значение, разница в том, что <code v-pre>unref()</code> работает только с реактивными данными, а в <code v-pre>toValue()</code> можно передавать любые методы возвращающие значения.</p>
+<h3 id="torefs" tabindex="-1"><a class="header-anchor" href="#torefs"><span>toRefs()</span></a></h3>
+<p>Преобразует всю свойства объекта в отдельные <code v-pre>ref</code> ссылки.<br>
+Удобно при деструктуризации.</p>
+<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="ts"><pre v-pre><code><span class="line"><span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token function">reactive</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
+<span class="line">    name<span class="token operator">:</span> <span class="token string">'Foo'</span><span class="token punctuation">,</span></span>
+<span class="line">    age<span class="token operator">:</span> <span class="token number">20</span><span class="token punctuation">,</span></span>
+<span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="token keyword">const</span> <span class="token punctuation">{</span> name<span class="token punctuation">,</span> age <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">toRefs</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="isproxy" tabindex="-1"><a class="header-anchor" href="#isproxy"><span>isProxy()</span></a></h3>
+<p>Проверяет является ли объект прокси.<br>
+Возвращает <code v-pre>true</code> если объек создан через <code v-pre>reactive()</code> или <code v-pre>readonly()</code></p>
+<h3 id="isreactive" tabindex="-1"><a class="header-anchor" href="#isreactive"><span>isReactive()</span></a></h3>
+<p>Вернет <code v-pre>true</code> если объект создан через <code v-pre>reactive()</code></p>
+<h3 id="isreadonly" tabindex="-1"><a class="header-anchor" href="#isreadonly"><span>isReadonly()</span></a></h3>
+<p>Вернет <code v-pre>true</code> если объект создан через <code v-pre>readonly()</code></p>
 </div></template>
 
 
