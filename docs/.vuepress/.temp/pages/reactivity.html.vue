@@ -87,6 +87,30 @@
 <p>Вернет <code v-pre>true</code> если объект создан через <code v-pre>reactive()</code></p>
 <h3 id="isreadonly" tabindex="-1"><a class="header-anchor" href="#isreadonly"><span>isReadonly()</span></a></h3>
 <p>Вернет <code v-pre>true</code> если объект создан через <code v-pre>readonly()</code></p>
+<h3 id="shallowref-переделать" tabindex="-1"><a class="header-anchor" href="#shallowref-переделать"><span>shallowRef() ПЕРЕДЕЛАТЬ</span></a></h3>
+<p>Создает объект, в котором реактивным является только первый уровень вложенности.<br>
+Vue не будет видеть или реагировать на изменения во вложенных свойствах объекта.<br>
+Может использоваться для оптимизации производительности, когда доступ ко вложенным свойствам не является нужным.</p>
+<h3 id="triggerref" tabindex="-1"><a class="header-anchor" href="#triggerref"><span>triggerRef()</span></a></h3>
+<p>Используется для обновления неотслеживаемых свойства объекта созданного через <code v-pre>shallwRef</code></p>
+<h3 id="customref" tabindex="-1"><a class="header-anchor" href="#customref"><span>customRef()</span></a></h3>
+<p>Позволяет создавать кастомный ref-объект, с возможностью контролировать вызов обновлений и отслеживание зависимостей.</p>
+<h3 id="shallowreactive" tabindex="-1"><a class="header-anchor" href="#shallowreactive"><span>shallowReactive()</span></a></h3>
+<p>Создает неглубокий <code v-pre>reactive</code> объект.<br>
+По аналогии с <code v-pre>shallowRef</code> создается объект у которого реактивным является только первый уровень вложенности.</p>
+<h3 id="shallowreadonly" tabindex="-1"><a class="header-anchor" href="#shallowreadonly"><span>shallowReadonly()</span></a></h3>
+<p>Делать только первый уровень объекта <code v-pre>readonly</code>, вложенные уровни не будет являться <code v-pre>readonly</code> и их можно будет изменять.</p>
+<h3 id="toraw" tabindex="-1"><a class="header-anchor" href="#toraw"><span>toRaw()</span></a></h3>
+<p>Делает из реактивного объекта созданного через <code v-pre>reactive</code>, <code v-pre>readonly</code>, <code v-pre>shallowRef</code>, <code v-pre>shallowReadonly</code> обычный объект.</p>
+<h3 id="markraw" tabindex="-1"><a class="header-anchor" href="#markraw"><span>markRaw()</span></a></h3>
+<p>Запрещает объекту становить реактивным.</p>
+<h3 id="effectscope" tabindex="-1"><a class="header-anchor" href="#effectscope"><span>effectScope()</span></a></h3>
+<p>Создает область действия, которая принимает другие реактивные данные с возможностью уничтожить их, по завершению каких-либо расчетов.</p>
+<p>Как правильно все данные и вычесления удаляются при размонтировании компонента, <code v-pre>effectScope</code> позволяет напрямую управлять ненужными данными.</p>
+<h3 id="getcurrentscope" tabindex="-1"><a class="header-anchor" href="#getcurrentscope"><span>getCurrentScope()</span></a></h3>
+<p>Возвращает текущую активную область.</p>
+<h3 id="onscopedispose" tabindex="-1"><a class="header-anchor" href="#onscopedispose"><span>onScopeDispose()</span></a></h3>
+<p>Регистрация коллбэка для текущей активной области действия эффекта. Коллбэк будет вызван, когда связанная с ним область действия эффекта будет остановлена.</p>
 </div></template>
 
 
