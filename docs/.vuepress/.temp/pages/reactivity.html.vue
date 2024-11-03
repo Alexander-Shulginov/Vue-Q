@@ -87,7 +87,7 @@
 <p>Вернет <code v-pre>true</code> если объект создан через <code v-pre>reactive()</code></p>
 <h3 id="isreadonly" tabindex="-1"><a class="header-anchor" href="#isreadonly"><span>isReadonly()</span></a></h3>
 <p>Вернет <code v-pre>true</code> если объект создан через <code v-pre>readonly()</code></p>
-<h3 id="shallowref-переделать" tabindex="-1"><a class="header-anchor" href="#shallowref-переделать"><span>shallowRef() ПЕРЕДЕЛАТЬ</span></a></h3>
+<h3 id="shallowref" tabindex="-1"><a class="header-anchor" href="#shallowref"><span>shallowRef()</span></a></h3>
 <p>Создает объект, в котором реактивным является только первый уровень вложенности.<br>
 Vue не будет видеть или реагировать на изменения во вложенных свойствах объекта.<br>
 Может использоваться для оптимизации производительности, когда доступ ко вложенным свойствам не является нужным.</p>
