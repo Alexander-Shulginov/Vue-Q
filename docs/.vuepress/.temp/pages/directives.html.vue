@@ -1,4 +1,4 @@
-<template><div><h3 id="что-такое-директивын" tabindex="-1"><a class="header-anchor" href="#что-такое-директивын"><span>Что такое директивын?</span></a></h3>
+<template><div><h3 id="что-такое-директивы" tabindex="-1"><a class="header-anchor" href="#что-такое-директивы"><span>Что такое директивы?</span></a></h3>
 <p>Директивы это специальные атрибуты с префиксом <code v-pre>v-</code> позволяющие динамически управлять DOM деревом на основе реактивных зависимостей.<br>
 Директивы подразделяются на встроенные и пользовательские.</p>
 <h3 id="для-чего-нужны-пользовательские-директивы" tabindex="-1"><a class="header-anchor" href="#для-чего-нужны-пользовательские-директивы"><span>Для чего нужны пользовательские директивы?</span></a></h3>
@@ -89,7 +89,7 @@
 <h3 id="v-text" tabindex="-1"><a class="header-anchor" href="#v-text"><span>v-text</span></a></h3>
 <p>Обновляет текстовое содержимое DOM элемента, работает через свойство <code v-pre>.textContent</code> поэтому перезаписывает все содержимое элемента.</p>
 <h3 id="v-html" tabindex="-1"><a class="header-anchor" href="#v-html"><span>v-html</span></a></h3>
-<p>Добавляет html разметку через свойство <code v-pre>.innerHtml</code>, использовать не рекомендуется по соображениям безопасности</p>
+<p>Добавляет html разметку через свойство <code v-pre>.innerHtml</code>, использовать не рекомендуется по соображениям безопасности.</p>
 <h3 id="v-pre" tabindex="-1"><a class="header-anchor" href="#v-pre"><span>v-pre</span></a></h3>
 <p>Пропускает компиляцию для элемента и всех его потомков.</p>
 <h3 id="v-once" tabindex="-1"><a class="header-anchor" href="#v-once"><span>v-once</span></a></h3>
