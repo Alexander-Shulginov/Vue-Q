@@ -37,3 +37,7 @@ This is the content of Tab2.
 ::: details 
 Директив позволяет связать данные и атрибуты.
 
+
+
+
+
